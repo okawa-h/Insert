@@ -5,7 +5,7 @@ javascript:(function () {
 	s.charset='UTF-8';
 	s.language='javascr'+'ipt';
 	s.type='text/javascr'+'ipt';
-	s.src='http://192.168.0.68:8888/tokyo/api/hack.js?t='+(new Date()).getTime();
+	s.src='http://192.168.0.68:8888/tokyo/Insert/onigiri.js?t='+(new Date()).getTime();
 	document.getElementsByTagName('head')[0].appendChild(s);
 })();
 */
@@ -296,7 +296,9 @@ javascript:(function () {
 
 
 
-
+	$("a").on('mousedown',function(e) {
+		e.preventDefault();
+	});
 	$("img").on('mousedown',function(downE) {
 
 		$target = $(this);
