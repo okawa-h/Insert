@@ -5,7 +5,7 @@ javascript:(function () {
 	s.charset='UTF-8';
 	s.language='javascr'+'ipt';
 	s.type='text/javascr'+'ipt';
-	s.id='onigiri-script';
+	s.id='onigiri-scr'+'ipt';
 	s.src='http://192.168.0.68:8888/tokyo/Insert/onigiri.js?t='+(new Date()).getTime();
 	document.getElementsByTagName('head')[0].appendChild(s);
 })();
@@ -42,24 +42,18 @@ javascript:(function () {
 		var script = document.getElementById('onigiri-script');
 		script.parentNode.removeChild(script);
 
-		var s=document.createElement('scr'+'ipt');
-		s.charset='UTF-8';
-		s.language='javascr'+'ipt';
-		s.type='text/javascr'+'ipt';
-		s.id='onigiri-script';
-		s.src='http://192.168.0.68:8888/tokyo/Insert/onigiri.js?t='+(new Date()).getTime();
+		var s = document.createElement('scr'+'ipt');
+		s.charset  = 'UTF-8';
+		s.language = 'javascr'+'ipt';
+		s.type     = 'text/javascr'+'ipt';
+		s.id       = 'onigiri-scr'+'ipt';
+		s.src      = 'http://192.168.0.68:8888/tokyo/Insert/onigiri.js?t='+(new Date()).getTime();
 		document.getElementsByTagName('head')[0].appendChild(s);
 
 	}
 
-	if(typeof jQuery !== "undefined"){ 
+	if (typeof jQuery !== "undefined" || typeof jQuery!="undefined"){ 
 
-		//alert("jQueryは読込まれています。");
-		init();
-
-	} else if (typeof jQuery!="undefined"){
-
-		//alert("jQueryは読込まれています。typeof jQuery="+typeof jQuery);
 		init();
 
 	}
@@ -93,8 +87,6 @@ javascript:(function () {
 		_$header = _$parent.find('header');
 		setWindow();
 
-		setGetActiveMail();
-
 		return false;
 	}
 
@@ -106,25 +98,42 @@ javascript:(function () {
 		var div = document.createElement('div');
 		div.id  = "box-window";
 		div.innerHTML =
-				'<header>'
-					+ '<p id="close-btn"></p><p id="storage-btn"></p><p id="wide-btn"></p>'
-				+ '</header>'
-				+ '<div id="content">'
-					+ '<nav>'
-						+ '<ol>'
-							+ '<li><p id="nav-home" class="active">HOME</p></li>'
-							+ '<li><p id="nav-about">ABOUT</p></li>'
-							+ '<li><p id="nav-work">WORK</p></li>'
-						+ '</ol>'
-					+ '</nav>'
-					+ '<div class="inner">'
-						+ '<p>サイトタイトル : ' + document.title + '</p>'
-						+ '<p>最終更新日時 : ' + document.lastModified + '</p>'
-						+ '<p>画像数 : ' + document.images.length + '</p>'
-						+ '<p>リンク数 : ' + document.links.length + '</p>'
-						+ '<p id="status-image-size">画像の大きさ : <span>なし</span></p>'
-					+ '</div>'
-				+ '</div>';
+				'<header>' +
+					'<p id="close-btn"></p><p id="storage-btn"></p><p id="wide-btn"></p>' +
+				'</header>' +
+				'<div id="content">' +
+					'<nav>' +
+						'<ol>' +
+							'<li><p id="nav-home" class="active">HOME</p></li>' +
+							'<li><p id="nav-about">ABOUT</p></li>' +
+							'<li><p id="nav-work">WORK</p></li>' +
+							'<li><p id="nav-board">BOARD</p></li>' +
+						'</ol>' +
+					'</nav>' +
+					'<div class="inner">' +
+						'<div id="contet-home" class="show contents">' +
+							'<p>サイトタイトル : ' + document.title + '</p>' +
+							'<p>最終更新日時 : ' + document.lastModified + '</p>' +
+							'<p>画像数 : ' + document.images.length + '</p>' +
+							'<p>リンク数 : ' + document.links.length + '</p>' +
+						'</div>' +
+						'<div id="contet-about" class="contents">' +
+							'<p id="status-image-size">画像の大きさ : <span>なし</span></p>' +
+						'</div>' +
+						'<div id="contet-work" class="contents">' +
+							'<iframe id="desk-nets" src="http://graphic-tokyo.dn-cloud.com/cgi-bin/dneo/dneo.cgi?" width="100%" height="300px"></iframe>' +
+							'<p id="open-secretWindow">シークレットウィンドウで開く</p>' +
+							'<p id="mail-auto-reload">Mail自動更新</p>' +
+							'<p id="test"><' + '?' + ' php echo 11111; ?' + '></p>' +
+						'</div>' +
+						'<div id="contet-board" class="contents">' +
+							'<div id="board-area">' +
+								'<input id="board-input" type="text" name="name" size="30" maxlength="20" ></input>' +
+								'<p id="board-write">投稿する</p>' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>';
 
 		document.body.appendChild(div);
 
@@ -136,6 +145,13 @@ javascript:(function () {
 	========================================================================== */
 	function setWindow() {
 
+		//alert('<?PHP print $a;?>');
+		var a = "<?= $a ?>";
+		//var hoge = <?php echo json_encode($hoge); ?>;			
+
+		_$parent.append(a);
+
+		setStyleSheet();
 		_$parent.css({
 			opacity  : 0,
 			top      : '70%',
@@ -145,7 +161,6 @@ javascript:(function () {
 			margin   : "auto",
 		});
 
-		setStyleSheet();
 
 		_$parent.css({
 			marginTop : -_$parent.height()/2,
@@ -164,6 +179,10 @@ javascript:(function () {
 		setWideBtn();
 		setOnMouseGetState();
 
+		setGetActiveMail();
+		//setGetDeskNets();
+		setBoard();
+
 		return false
 	}
 
@@ -172,31 +191,12 @@ javascript:(function () {
 			========================================================================== */
 			function setStyleSheet() {
 
-				var style  = document.createElement('style');
+				var style  = document.createElement('link');
+				style.rel = "stylesheet";
 				style.type = "text/css";
-				style.id   = "box-window-style";
+				style.id   = "onigiri-style";
+				style.href = "http://192.168.0.68:8888/tokyo/Insert/onigiri/css/style.css";
 				document.getElementsByTagName('head').item(0).appendChild(style);
-
-				document.getElementById('box-window-style').innerHTML =
-				"#box-window { position:fixed; border-radius:10px; background-color:rgba(230,230,230,.9); z-index:100000; } " +
-				"#box-window.onStorage:hover { opacity:.8 !important; } " +
-				"#box-window header { padding:4px 10px 6px; border-top-left-radius:10px; border-top-right-radius:10px; background-color:#fff; } " +
-				"#box-window header p { display:inline-block; margin-right:5px; border-radius:50%; width:10px; height:10px; cursor:pointer; } " +
-				"#box-window header #close-btn { background-color:#d3565c; } " +
-				"#box-window header #storage-btn { background-color:#f6da56; } " +
-				"#box-window header #wide-btn { background-color:#68b46c; } " +
-				"#box-window .inner { margin: 20px 20px 20px 20%; } " +
-				"#box-window nav { float:left; width:16%; padding:0 2% 0 0; } " +
-				"#box-window nav ol { } " +
-				"#box-window nav ol li {  } " +
-				"#box-window nav ol li p { padding:5px 0; border-left:5px solid #bbb; font-size:12px; text-align:center; cursor:pointer; } " +
-				"#box-window nav ol li p.active { color:#fff; } " +
-				"#box-window nav ol li #nav-home { border-left-color:#f6da56; } " +
-				"#box-window nav ol li #nav-home.active { background-color:#f6da56; } " +
-				"#box-window nav ol li #nav-about { border-left-color:#d3565c; } " +
-				"#box-window nav ol li #nav-about.active { background-color:#d3565c; } " +
-				"#box-window nav ol li #nav-work { border-left-color:#68b46c; } " +
-				"#box-window nav ol li #nav-work.active { background-color:#68b46c; } ";
 
 				return false;
 			}
@@ -240,14 +240,20 @@ javascript:(function () {
 			========================================================================== */
 			function setNav() {
 
-				var $nav = _$parent.find('nav');
-				var $btn = $nav.find('p');
+				var $nav      = _$parent.find('nav');
+				var $contents = _$parent.find('.contents');
+				var $btn      = $nav.find('p');
 
 				$btn.on('click',function() {
 
-					if ($(this).hasClass('active')) return;
+					var $target = $(this);
+
+					if ($target.hasClass('active')) return;
+					$contents.removeClass('show');
 					$btn.removeClass('active');
-					$(this).addClass('active');
+					$target.addClass('active');
+					var id = $target.prop('id').split('-')[1];
+					$contents.filter('#contet-' + id).addClass('show');
 
 				});
 
@@ -265,7 +271,7 @@ javascript:(function () {
 						opacity : 0,
 						top     : parseInt(_$parent.css('top')) + 50 + 'px'
 					},100, function() {
-						_$parent.add($('#box-window-style')).remove();
+						_$parent.add($('#onigiri-style')).remove();
 					});
 				});
 
@@ -291,7 +297,7 @@ javascript:(function () {
 					},100, function() {
 
 						_$header.children().hide();
-						_$parent.find('.inner').children().hide();
+						_$parent.find('#content').children().hide();
 						_$parent.on('dblclick',function() {
 
 							_$parent.animate({
@@ -305,7 +311,7 @@ javascript:(function () {
 
 								_$parent.css({ cursor:'default'}).removeClass('onStorage');
 								_$header.children().show();
-								_$parent.find('.inner').children().show();
+								_$parent.find('#content').children().show();
 
 							});
 
@@ -378,59 +384,161 @@ javascript:(function () {
 			}
 
 	/* =======================================================================
-		Set Get Active Mail - private
+		Set Get Active Mail - Module
 	========================================================================== */
 	function setGetActiveMail() {
 
-		var href = window.location.href;
-		if (href.indexOf("192.168.90.158/") == -1) return;
+		var href    = window.location.href;
+		var $onBtn  = $('#mail-auto-reload');
+		var isError = false;
 
-		console.log('ActiveMail自動更新開始します。');
+		if (href.indexOf("192.168.90.158/") == -1) isError = true;
+		if (!isError) {
 
-		var $iframe   = $('#contentIframe').contents();
-		var $body     = $('body');
-		var INTARVAL  = 1000;
-		var isOnFocus = true;
+			var $iframe   = $('#contentIframe').contents();
+			var INTARVAL  = 10000;
+			var isOnFocus = true;
 
-		var $parent = $iframe.find('#rmail_list_menu_buttons');
-		var $btn    = $parent.find('#_mail_action_button_reload');
-		var $folder = $iframe.find('#mail_folder_xtree');
-		var $box    = $folder.find('tr[title="受信箱"]').find('.standartTreeRow').find('span');
-		var $post   = $('#footer_scroll_contents').find('.news_link');
+			var $parent = $iframe.find('#rmail_list_menu_buttons');
+			var $btn    = $parent.find('#_mail_action_button_reload');
+			var $folder = $iframe.find('#mail_folder_xtree');
+			var $box    = $folder.find('tr[title="受信箱"]').find('.standartTreeRow').find('span');
+			var $post   = $('#footer_scroll_contents').find('.news_link');
 
-		var MAILBOX = $box.text();
-		var timer;
+			var MAILBOX = $box.text();
+			var timer;
+		}
 
-		_$win.bind('focus',function() {
+		$onBtn.on({ 'click':onClick });
 
-			clearInterval(timer);
-			console.log('focus');
+		function onClick() {
 
-		}).bind('blur',function() {
+			if (isError) {
 
-			timer = setInterval(setTimer,1000);
-			console.log('blur');
+				alert('Active Mailじゃないで。');
+				return;
+
+			}
+
+			$onBtn.toggleClass('on');
+
+			if ($onBtn.hasClass('on')) {
+
+				console.log('ActiveMail自動更新開始します。');
+				$btn.click();
+				timer = setInterval(setTimer,INTARVAL);
+
+			} else {
+
+				console.log('ActiveMail自動更新を止めました。');
+				clearInterval(timer);
+
+			}
+
+			function setTimer() {
+
+				$btn.click();
+				console.log('更新しました。');
+				if (MAILBOX != $box.text()) {
+
+					var length = $box.text().split('受信箱').join('');
+					if (length == '（0）') return;
+
+					var $mailBox  = $iframe.find('#divListGrid').find('.objbox');
+					var $mailList = $mailBox.find('.obj').find('tbody').find('tr');
+					var $firstMail = $mailList.eq(1);
+					var $title     = $firstMail.find('td').eq(5).text();
+					var $name      = $firstMail.find('td').eq(6).text();
+					MAILBOX = $box.text();
+					
+					console.log($mailList.find('.unseen_mail'));
+
+					var setText = length + "件のメールがあります。\n";
+					setText += '件名:' + $title + '\n' + '送信者:' + $name;
+
+					setNotification( 'メール',setText );
+
+				}
+
+			};
+
+		}
+	}
+
+	/* =======================================================================
+		Set Get Desk Nets - Module
+	========================================================================== */
+	function setGetDeskNets() {
+
+		var $iframe = _$parent.find('#desk-nets');
+
+		$iframe.on('load',function() {
+			alert('load');
+			var $html     = $iframe.contents().find('body');
+			// var hW        = $html.width();
+			// var hH        = $html.height();
+
+			//var $bar = $html.find('#dn-ntwi-container');
+
+			//console.log($bar);
+			//$bar.click();
+
+			// $html.css({
+			// 	marginTop : -(hH*70)/100 + 'px',
+			// 	marginLeft: -(hW*70)/100 + 'px',
+			// 	transform : 'scale(.7,.7)',
+			// });
 
 		});
 
-		function setTimer() {
+		return false;
+	}
 
-			$btn.click();
-			console.log('hatudou');
-			if (MAILBOX != $box.text()) {
-				MAILBOX = $box.text();
-				setNotification($box.text().split('受信箱').join('') + "件のメールがあります。");
-			}
+	/* =======================================================================
+		Set Board - Module
+	========================================================================== */
+	function setBoard() {
 
-		};
+		var $parent = _$parent.find('#board-area');
+		var $input  = $parent.find('#board-input');
+		var $btn    = $parent.find('#board-write');
+	 
+		ajax('show');
+		function ajax(action,val) {
+
+			$.ajax({
+				type: 'GET',
+				dataType: 'json',
+				url : "http://192.168.0.68:8888/tokyo/insert/onigiri/data/board.php?act="+action+"&content="+val,
+			})
+			.done(function(response) {
+
+				var json = $.parseJSON(response);
+				if (json == null) return;
+
+				console.log(json);
+				var html = "";
+
+				html += json['name'] + ':' + json['content'];
+				$parent.append(html);
+			});
+      
+		}
+
+
+		$btn.on('click',function() {
+
+			ajax('write',$input.val());
+
+		});
 
 	}
 
 
 	/* =======================================================================
-		Set Notification
+		Set Notification - Module
 	========================================================================== */
-	function setNotification(text) {
+	function setNotification(ttl,text) {
 
 		var Notification = window.Notification || window.mozNotification || window.webkitNotification;
 
@@ -441,15 +549,17 @@ javascript:(function () {
 
 		// 通知インスタンス生成
 		var instance = new Notification(
-		"お知らせタイトル", // 通知タイトル
+			ttl,
 			{
 				body: text, // 通知内容
 				icon: "http://192.168.0.68:8888/tokyo/Insert/onigiri/img/icon.png", // アイコン
 			}
 		);
+		setTimeout(instance.close.bind(instance), 5000);
 
 		//instance.config({autoClose: 1000});
 		instance.onclick = function () {
+			instance.close.bind(instance);
 			console.log("onclick");
 		};
 		instance.onerror = function () {

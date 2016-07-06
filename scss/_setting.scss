@@ -1,0 +1,17 @@
+@charset "UTF-8";
+$baseColor   : #261e1c;
+$entryColor  : #bf0e5f;
+$entryHover  : #A4044E;
+$currentColor: #c3ba2e;
+$strongColor : #bf0e5f;
+
+$window: 1240px;
+$pc    : 960px;
+$tablet: 768px;
+$mobile: 640px;
+
+@mixin max( $breakPoint : $pc ) {
+	@media screen and (max-width: $breakPoint) {
+		@content;
+	}
+}

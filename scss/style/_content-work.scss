@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/*-------------------------------------------------------------------------
+	Content Work
+/*-----------------------------------------------------------------------*/
+#box-window #contet-work {}
+
+#box-window #mail-auto-reload {
+	display: inline-block;
+	position: relative;
+	padding: 3px 10px;
+	border-radius: 4px;
+	background-color: #f7d034;
+	box-shadow: 0 3px 0 #f7ba59;
+	color: #3b3b3b;
+	font-size: 12px;
+	text-align: center;
+	cursor: pointer;
+	&:hover {
+		top: -4px;
+		box-shadow: 0 7px 0 #f7ba59;
+	}
+	&.on,
+	&:active {
+		top: 3px;
+		box-shadow: none;
+	}
+}

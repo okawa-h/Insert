@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+    "build_systems":
+    [
+        {
+            "name":"onigiri-sass",
+            "working_dir":"${project_path:Default}",
+            "cmd": ["scss", "--update", "--stop-on-error", "--no-cache", "--sourcemap=none", "--style", "Compressed" ,"--watch", "./scss/:onigiri/css/"]
+        }
+    ]
+}

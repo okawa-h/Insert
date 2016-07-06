@@ -1,0 +1,4 @@
+-cp src
+-main src.Main
+-js onigiri/js/script.js
+-cp ../../haxe/lib/

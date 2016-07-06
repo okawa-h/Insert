@@ -1,0 +1,145 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700);
+/*-------------------------------------------------------------------------
+	Reset
+/*-----------------------------------------------------------------------*/
+#box-window * {
+  margin: 0;
+  padding: 0; }
+#box-window html {
+  overflow-y: scroll;
+  word-break: break-all; }
+#box-window h1, #box-window h2, #box-window h3, #box-window h4, #box-window h5, #box-window h6 {
+  font-size: 100%;
+  font-weight: normal; }
+#box-window ol, #box-window ul {
+  list-style: none; }
+#box-window blockquote, #box-window q {
+  quotes: none; }
+#box-window :focus {
+  outline: 0; }
+#box-window ins {
+  text-decoration: none; }
+#box-window del {
+  text-decoration: line-through; }
+#box-window img {
+  border: 0;
+  vertical-align: bottom; }
+#box-window address {
+  font-style: normal; }
+#box-window body {
+  color: #000;
+  font-size: 80%;
+  font-family: Verdana, "ＭＳ Ｐゴシック", sans-serif; }
+#box-window p, #box-window li, #box-window dt, #box-window dl {
+  line-height: 1.6;
+  letter-spacing: 0.5px; }
+#box-window strong {
+  font-weight: bold; }
+#box-window em {
+  font-style: normal; }
+#box-window a:link, #box-window a:visited, #box-window a:hover {
+  color: #000;
+  text-decoration: none; }
+#box-window div, #box-window ul, #box-window dl {
+  zoom: 1; }
+#box-window div:after, #box-window ul:after, #box-window dl:after {
+  content: "";
+  display: block;
+  clear: both;
+  visibility: hidden; }
+
+/*-------------------------------------------------------------------------
+	Header
+/*-----------------------------------------------------------------------*/
+#box-window header {
+  padding: 4px 10px 6px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #fff; }
+#box-window header p {
+  display: inline-block;
+  margin-right: 5px;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  cursor: pointer; }
+#box-window header #close-btn {
+  background-color: #d3565c; }
+#box-window header #storage-btn {
+  background-color: #f6da56; }
+#box-window header #wide-btn {
+  background-color: #68b46c; }
+
+/*-------------------------------------------------------------------------
+	Nav
+/*-----------------------------------------------------------------------*/
+#box-window nav {
+  float: left;
+  width: 16%;
+  padding: 0 2% 0 0; }
+#box-window nav ol {
+  list-style: none; }
+#box-window nav ol li p {
+  padding: 5px 0;
+  border-left: 5px solid #bbb;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer; }
+#box-window nav ol li p.active {
+  color: #fff; }
+#box-window nav ol li #nav-home {
+  border-left-color: #24b99b; }
+#box-window nav ol li #nav-home.active {
+  background-color: #24b99b; }
+#box-window nav ol li #nav-about {
+  border-left-color: #676982; }
+#box-window nav ol li #nav-about.active {
+  background-color: #676982; }
+#box-window nav ol li #nav-work {
+  border-left-color: #fbb06d; }
+#box-window nav ol li #nav-work.active {
+  background-color: #fbb06d; }
+#box-window nav ol li #nav-board {
+  border-left-color: #e27795; }
+#box-window nav ol li #nav-board.active {
+  background-color: #e27795; }
+
+/*#24b99b,#676982,#6ac8b6,#fbb06d,#e27795,#a285c5*/
+/*-------------------------------------------------------------------------
+	Content Work
+/*-----------------------------------------------------------------------*/
+#box-window #mail-auto-reload {
+  display: inline-block;
+  position: relative;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background-color: #f7d034;
+  box-shadow: 0 3px 0 #f7ba59;
+  color: #3b3b3b;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer; }
+#box-window #mail-auto-reload:hover {
+  top: -4px;
+  box-shadow: 0 7px 0 #f7ba59; }
+#box-window #mail-auto-reload.on, #box-window #mail-auto-reload:active {
+  top: 3px;
+  box-shadow: none; }
+
+/*-------------------------------------------------------------------------
+	Main
+/*-----------------------------------------------------------------------*/
+#box-window {
+  position: fixed;
+  border-radius: 10px;
+  background-color: rgba(230, 230, 230, 0.9);
+  z-index: 100000; }
+#box-window.onStorage:hover {
+  opacity: .8 !important; }
+#box-window .inner {
+  margin: 20px 20px 20px 20%; }
+#box-window .inner .contents {
+  display: none; }
+#box-window .inner .contents.show {
+  display: block; }

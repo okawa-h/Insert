@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+/*-------------------------------------------------------------------------
+	Reset
+/*-----------------------------------------------------------------------*/
+
+#box-window {
+	* {
+		margin:0;
+		padding:0;
+	}
+
+	html {
+		overflow-y:scroll;
+		word-break:break-all;
+	}
+
+	h1,h2,h3,h4,h5,h6 {
+		font-size:100%;
+		font-weight:normal;
+	}
+
+	ol,ul {
+		list-style:none;
+	}
+
+	blockquote,q {
+		quotes:none;
+	}
+
+	:focus {
+		outline:0;
+	}
+
+	ins {
+		text-decoration:none;
+	}
+
+	del {
+		text-decoration:line-through;
+	}
+
+	table {
+	}
+
+	img {
+		border:0;
+		vertical-align:bottom;
+	}
+
+	address {
+		font-style:normal;
+	}
+
+	body {
+		color:#000;
+		font-size:80%;
+		font-family:Verdana, "ＭＳ Ｐゴシック", sans-serif;
+	}
+
+	p,li,dt,dl {
+		line-height:1.6;
+		letter-spacing:0.5px;
+	}
+
+	strong {
+		font-weight:bold;
+	}
+
+	em {
+		font-style:normal;
+	}
+
+	a:link,
+	a:visited,
+	a:hover {
+		color: #000;
+		text-decoration: none;
+	}
+
+	div,ul,dl {
+		zoom:1;
+		&:after {
+			content:"";
+			display: block;
+			clear:both;
+			visibility:hidden;
+		}
+	}
+}

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+@import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700);
+@import "setting";
+
+@import "style/reset";
+@import "style/layout";
+@import "style/content-work";
+
+/*-------------------------------------------------------------------------
+	Main
+/*-----------------------------------------------------------------------*/
+#box-window {
+	position: fixed;
+	border-radius: 10px;
+	background-color: rgba(230,230,230,.9);
+	z-index:100000;
+	&.onStorage:hover {
+		opacity:.8 !important;
+	}
+
+	 .inner {
+		margin: 20px 20px 20px 20%;
+		 .contents {
+			display: none;
+			&.show {
+				display: block;
+			}
+		}
+	}
+}
