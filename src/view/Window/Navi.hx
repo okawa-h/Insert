@@ -1,6 +1,7 @@
 package src.view.window;
 
-import js.JQuery;
+import js.jquery.JQuery;
+import js.jquery.Event;
 
 class Navi {
 
@@ -17,9 +18,9 @@ class Navi {
 		var jContents = jParent.find('.contents');
 		var jBtn      = jNav.find('p');
 
-		jBtn.on('click',function(event:JqEvent) {
+		jBtn.on('click',function(event:Event) {
 
-			var jTarget : JQuery = JQuery.cur;
+			var jTarget : JQuery = new JQuery(event.currentTarget);
 
 			if (jTarget.hasClass('active')) return;
 			jContents.removeClass('show');

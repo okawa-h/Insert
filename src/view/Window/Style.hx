@@ -1,7 +1,6 @@
 package src.view.window;
 
 import js.Browser;
-import js.html.Element;
 
 class Style {
 
@@ -14,7 +13,7 @@ class Style {
 		element.id   = "onigiri-style";
 		element.type = "text/css";
 		element.rel  = "stylesheet";
-		element.href = "http://192.168.0.68:8888/tokyo/Insert/onigiri/css/style.css";
+		element.href = "http://192.168.0.134:8888/tokyo/browser-insert/onigiri/css/style.css";
 
 		Browser.document.getElementsByTagName('head').item(0).appendChild(element);
 	}

@@ -1,6 +1,6 @@
 package src.view.window;
 
-import js.JQuery;
+import js.jquery.JQuery;
 
 class Drag {	
 

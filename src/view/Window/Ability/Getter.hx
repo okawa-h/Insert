@@ -1,6 +1,7 @@
 package src.view.window.ability;
 
-import js.JQuery;
+import js.jquery.JQuery;
+import js.jquery.Event;
 
 class Getter {
 
@@ -23,9 +24,9 @@ class Getter {
 
 		var jImageSizeText : JQuery = _jParent.find('#status-image-size').find('span');
 
-		new JQuery("img").on('mouseover',function(event:JqEvent) {
+		new JQuery("img").on('mouseover',function(event:Event) {
 
-			var jTarget : JQuery = JQuery.cur;
+			var jTarget : JQuery = new JQuery(event.currentTarget);
 
 			var status : String = "width:" + jTarget.width() + ";";
 			status += "height:" + jTarget.height() + ";";

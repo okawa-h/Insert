@@ -1,6 +1,7 @@
 package src.view.window;
 
-import js.JQuery;
+import js.jquery.JQuery;
+import js.jquery.Event;
 
 class Header {
 
@@ -24,7 +25,7 @@ class Header {
 	========================================================================== */
 	private static function setCloseBtn():Void {
 
-		_jHeader.find('#close-btn').on('click',function(event:JqEvent) {
+		_jHeader.find('#close-btn').on('click',function(event:Event) {
 
 			_jParent.animate({
 				opacity : 0,
@@ -42,7 +43,7 @@ class Header {
 	========================================================================== */
 	private static function setStorageBtn():Void {
 
-		_jHeader.find('#storage-btn').on('click',function(event:JqEvent) {
+		_jHeader.find('#storage-btn').on('click',function(event:Event) {
 
 			_jParent.css({ cursor:'pointer' }).addClass('onStorage');
 
@@ -55,7 +56,7 @@ class Header {
 
 				_jHeader.children().hide();
 				_jParent.find('#content').children().hide();
-				_jParent.on('dblclick',function(dbEvent:JqEvent) {
+				_jParent.on('dblclick',function(dbEvent:Event) {
 
 					_jParent.animate({
 						top    : 50 + '%',
@@ -86,7 +87,7 @@ class Header {
 
 		var jBtn = _jHeader.find('#wide-btn');
 
-		jBtn.on('click',function(event:JqEvent) {
+		jBtn.on('click',function(event:Event) {
 
 			jBtn.toggleClass('on');
 

@@ -1,7 +1,8 @@
 package src.view.window.ability;
 
 import haxe.Timer;
-import js.JQuery;
+import js.jquery.JQuery;
+import js.jquery.Event;
 import src.utils.Notifications;
 
 class Mail {
@@ -41,7 +42,7 @@ class Mail {
 
 		var isOnFocus = true;
 
-		_jBtn.on('click',function(event:JqEvent) {
+		_jBtn.on('click',function(event:Event) {
 
 			onClick();
 

@@ -2,7 +2,6 @@ package src.utils;
 
 import js.Browser;
 import js.html.Element;
-import js.Lib;
 
 class Check {
 
@@ -15,13 +14,13 @@ class Check {
 
 		if (Browser.document.readyState != 'complete') {
 
-			Lib.alert('ブラウザが処理中です。動作が完了してから（読み込み中止ボタンがリロードボタンに変わってから）再度ブックマークレットを実行してください。');
+			Browser.alert('ブラウザが処理中です。動作が完了してから（読み込み中止ボタンがリロードボタンに変わってから）再度ブックマークレットを実行してください。');
 			return false;
 		}
 
 		if (untyped elem) {
 
-			Lib.alert('実行済みです。');
+			Browser.alert('実行済みです。');
 			return false;
 
 		}
@@ -41,7 +40,7 @@ class Check {
 			s.language = 'javascr'+'ipt';
 			s.type     = 'text/javascr'+'ipt';
 			s.id       = 'onigiri-scr'+'ipt';
-			s.src      = 'http://192.168.0.68:8888/tokyo/Insert/onigiri.js?t='+time.toString();
+			s.src      = 'http://192.168.0.134:8888/tokyo/browser-insert/onigiri.js?t='+time.toString();
 			Browser.document.getElementsByTagName('head')[0].appendChild(s);
 
 		}

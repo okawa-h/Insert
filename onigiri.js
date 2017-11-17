@@ -6,7 +6,7 @@ javascript:(function () {
 	s.language='javascr'+'ipt';
 	s.type='text/javascr'+'ipt';
 	s.id='onigiri-scr'+'ipt';
-	s.src='http://192.168.0.68:8888/tokyo/Insert/onigiri.js?t='+(new Date()).getTime();
+	s.src='http://192.168.0.134:8888/tokyo/browser-insert/onigiri.js?t='+(new Date()).getTime();
 	document.getElementsByTagName('head')[0].appendChild(s);
 })();
 */
@@ -47,7 +47,7 @@ javascript:(function () {
 		s.language = 'javascr'+'ipt';
 		s.type     = 'text/javascr'+'ipt';
 		s.id       = 'onigiri-scr'+'ipt';
-		s.src      = 'http://192.168.0.68:8888/tokyo/Insert/onigiri.js?t='+(new Date()).getTime();
+		s.src      = 'http://192.168.0.134:8888/tokyo/browser-insert/onigiri.js?t='+(new Date()).getTime();
 		document.getElementsByTagName('head')[0].appendChild(s);
 
 	}
@@ -195,7 +195,7 @@ javascript:(function () {
 				style.rel = "stylesheet";
 				style.type = "text/css";
 				style.id   = "onigiri-style";
-				style.href = "http://192.168.0.68:8888/tokyo/Insert/onigiri/css/style.css";
+				style.href = "http://192.168.0.134:8888/tokyo/browser-insert/onigiri/css/style.css";
 				document.getElementsByTagName('head').item(0).appendChild(style);
 
 				return false;
@@ -509,7 +509,7 @@ javascript:(function () {
 			$.ajax({
 				type: 'GET',
 				dataType: 'json',
-				url : "http://192.168.0.68:8888/tokyo/insert/onigiri/data/board.php?act="+action+"&content="+val,
+				url : "http://192.168.0.134:8888/tokyo/browser-insert/onigiri/data/board.php?act="+action+"&content="+val,
 			})
 			.done(function(response) {
 

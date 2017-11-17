@@ -1,6 +1,6 @@
 package src.view;
 
-import js.JQuery;
+import js.jquery.JQuery;
 import src.view.window.Html;
 import src.view.window.Drag;
 import src.view.window.Header;

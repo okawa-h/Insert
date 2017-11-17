@@ -1,6 +1,6 @@
 package src.view.window;
 
-import js.JQuery;
+import js.jquery.JQuery;
 import src.view.window.ability.Getter;
 import src.view.window.ability.Mail;
 
